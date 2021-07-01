@@ -16,5 +16,11 @@ namespace Receitas.View
         {
             InitializeComponent();
         }
+
+        private void inserirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmInserirUsuario nw_user = new FrmInserirUsuario();
+            nw_user.ShowDialog();
+        }
     }
 }
