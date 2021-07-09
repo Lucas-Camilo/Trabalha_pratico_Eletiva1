@@ -17,6 +17,7 @@ namespace Receitas.View
         {
             InitializeComponent();
             PreencheCombo();
+            txtCategoria.MaxLength = 20;
         }
         public void PreencheCombo()
         {

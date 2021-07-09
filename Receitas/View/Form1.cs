@@ -16,6 +16,8 @@ namespace Receitas
         public FrmLogin()
         {
             InitializeComponent();
+            txtSenha.MaxLength = 30;
+            txtUser.MaxLength = 30;
         }
 
         private void button1_Click(object sender, EventArgs e)

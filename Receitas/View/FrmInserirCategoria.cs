@@ -16,6 +16,7 @@ namespace Receitas.View
         public FrmInserirCategoria()
         {
             InitializeComponent();
+            txtCategoria.MaxLength = 20;
         }
 
         private void button1_Click(object sender, EventArgs e)

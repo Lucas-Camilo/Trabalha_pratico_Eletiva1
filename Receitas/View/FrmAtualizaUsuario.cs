@@ -19,6 +19,8 @@ namespace Receitas.View
             ID = id;
             MeuUsuario = meuUsuario;
             PreencheCombo();
+            txtUser.MaxLength = 30;
+            txtSenha.MaxLength = 30;
         }
         private int ID;
         private bool MeuUsuario;
@@ -46,9 +48,15 @@ namespace Receitas.View
             else
             {
                 ClsUsuario n_user = new ClsUsuario(cbxUsuario.Text);
+                n_user.SelecionarIDPorNome();
                 n_user.AtalizarUsuario(txtUser.Text, txtSenha.Text, cbx_perfil.Text);
                 this.Close();
             }
+        }
+
+        private void FrmAtualizaUsuario_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

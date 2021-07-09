@@ -54,6 +54,7 @@
             // 
             // cbxUsuario
             // 
+            this.cbxUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxUsuario.FormattingEnabled = true;
             this.cbxUsuario.Location = new System.Drawing.Point(77, 161);
@@ -121,6 +122,7 @@
             // 
             // cbx_perfil
             // 
+            this.cbx_perfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_perfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_perfil.FormattingEnabled = true;
             this.cbx_perfil.Items.AddRange(new object[] {
@@ -158,6 +160,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "FrmAtualizaUsuario";
             this.Text = "FrmAtualizaUsuario";
+            this.Load += new System.EventHandler(this.FrmAtualizaUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

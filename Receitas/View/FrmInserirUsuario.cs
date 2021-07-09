@@ -16,6 +16,8 @@ namespace Receitas.View
         public FrmInserirUsuario()
         {
             InitializeComponent();
+            txtUser.MaxLength = 30;
+            txtSenha.MaxLength = 30;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,6 +36,11 @@ namespace Receitas.View
                 n_U.InserirUsuario();
                 this.Close();
             }
+        }
+
+        private void FrmInserirUsuario_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
