@@ -7,14 +7,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Receitas.Model;
 
 namespace Receitas.View
 {
     public partial class FrmDeletarUser : Form
     {
-        public FrmDeletarUser()
+        public FrmDeletarUser(int id)
         {
             InitializeComponent();
+            ID_Atual = id;
+            CarregaListBox();
+        }
+        private int ID_Atual;
+        public void CarregaListBox()
+        {
+            ClsCarregamento.carregarComboBox(cbxUsuarios, "Select login from login Where id <>"+ID_Atual.ToString());
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show("Tem certeza que deseja excluir o usuário?", "Confirmação", buttons);
+            if (!cbxUsuarios.Text.Equals(""))
+            {
+                ClsUsuario user = new ClsUsuario(cbxUsuarios.Text);
+                user.SelecionarIDPorNome();
+                if (result == DialogResult.Yes)
+                {
+                    user.DeletarUsuario();
+                }
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Favor selecione um usuario para excluir");
+            }
         }
     }
 }
