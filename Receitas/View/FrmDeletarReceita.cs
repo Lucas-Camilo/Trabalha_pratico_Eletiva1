@@ -20,7 +20,7 @@ namespace Receitas.View
         }
         public void PreencheCombo()
         {
-            ClsCarregamento.carregarComboBox(cbxReceitas, "Select titulo from receitas");
+            ClsCarregamento.carregarComboBox(cbxReceitas, "Select titulo from receita");
         }
 
         private void button1_Click(object sender, EventArgs e)
