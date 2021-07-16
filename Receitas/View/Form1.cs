@@ -41,8 +41,9 @@ namespace Receitas
                     MessageBox.Show("Você ainda não tem acesso ao sistema");
                 }
             }
-            catch
+            catch (Exception error)
             {
+                MessageBox.Show(error.Message);
                 txtUser.Text = "";
                 txtSenha.Text = "";
                 MessageBox.Show("Você ainda não tem acesso ao sistema");

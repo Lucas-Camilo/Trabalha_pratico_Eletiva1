@@ -36,7 +36,7 @@ namespace Receitas.View
                 if (canConvert == true)
                 {
                     ingrediente = new ClsIngrediente(nome, unidade, int.Parse(quant), descricao);
-                    ingrediente.SelecionarIDPorNome();
+                    // ingrediente.SelecionarIDPorNome();
                     ingrediente.InserirIngrediante();
                     this.Close();
                 }

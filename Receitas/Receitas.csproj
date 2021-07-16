@@ -69,7 +69,14 @@
     <Compile Include="Model\ClsCarregamento.cs" />
     <Compile Include="Model\ClsCategoria.cs" />
     <Compile Include="Model\ClsIngrediente.cs" />
+    <Compile Include="Model\ClsReceitas.cs" />
     <Compile Include="Model\ClsUsuario.cs" />
+    <Compile Include="View\FmInserirReceita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FmInserirReceita.Designer.cs">
+      <DependentUpon>FmInserirReceita.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +93,12 @@
     <Compile Include="View\FrmAtualizaCategoria.Designer.cs">
       <DependentUpon>FrmAtualizaCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FrmAtualizaIngrediente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmAtualizaIngrediente.Designer.cs">
+      <DependentUpon>FrmAtualizaIngrediente.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FrmAtualizaUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +110,18 @@
     </Compile>
     <Compile Include="View\FrmDeletarCategoria.Designer.cs">
       <DependentUpon>FrmDeletarCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmDeletarIngrediente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmDeletarIngrediente.Designer.cs">
+      <DependentUpon>FrmDeletarIngrediente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmDeletarReceita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmDeletarReceita.Designer.cs">
+      <DependentUpon>FrmDeletarReceita.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FrmDeletarUser.cs">
       <SubType>Form</SubType>
@@ -128,6 +153,9 @@
     <Compile Include="View\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\FmInserirReceita.resx">
+      <DependentUpon>FmInserirReceita.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,11 +172,20 @@
     <EmbeddedResource Include="View\FrmAtualizaCategoria.resx">
       <DependentUpon>FrmAtualizaCategoria.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmAtualizaIngrediente.resx">
+      <DependentUpon>FrmAtualizaIngrediente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmAtualizaUsuario.resx">
       <DependentUpon>FrmAtualizaUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmDeletarCategoria.resx">
       <DependentUpon>FrmDeletarCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmDeletarIngrediente.resx">
+      <DependentUpon>FrmDeletarIngrediente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmDeletarReceita.resx">
+      <DependentUpon>FrmDeletarReceita.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmDeletarUser.resx">
       <DependentUpon>FrmDeletarUser.cs</DependentUpon>

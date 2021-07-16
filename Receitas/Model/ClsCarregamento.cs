@@ -24,7 +24,7 @@ namespace Receitas.Model
             while (dr.Read())
             {
                 // Regra de Nome para Inserir na ListBox
-                texto = dr[0].ToString() + "-" + dr[1].ToString();
+                texto = dr[0].ToString();
                 ltb.Items.Add(texto);
             }
             dr.Close();
@@ -32,11 +32,9 @@ namespace Receitas.Model
         }
         public static void carregarComboBox(ComboBox cbx, string query)
         {
-
             ClsConexao conec = new ClsConexao();
 
             cbx.Items.Clear();
-
 
             conec.conectar();
 

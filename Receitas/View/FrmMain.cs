@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Receitas.Model;
+
 
 namespace Receitas.View
 {
@@ -16,8 +18,15 @@ namespace Receitas.View
         {
             InitializeComponent();
             ID = id;
+            preencheListBox();
         }
         private int ID;
+
+        public void preencheListBox()
+        {
+            ClsCarregamento.CarregaListBox(lsbReceitas, "Select titulo from receita");
+        }
+
         private void inserirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmInserirUsuario nw_user = new FrmInserirUsuario();
@@ -58,6 +67,48 @@ namespace Receitas.View
         {
             FrmDeletarCategoria Del_Categoria = new FrmDeletarCategoria();
             Del_Categoria.ShowDialog();
+        }
+
+        private void inserirToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FrmInserirIngrediente Ins_Ingrediente = new FrmInserirIngrediente();
+            Ins_Ingrediente.ShowDialog();
+        }
+
+        private void atualizarToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            FrmAtualizaIngrediente Up_Ingrediente = new FrmAtualizaIngrediente();
+            Up_Ingrediente.ShowDialog();
+        }
+
+        private void removerToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FrmDeletarIngrediente Up_Ingrediente = new FrmDeletarIngrediente();
+            Up_Ingrediente.ShowDialog();
+        }
+
+        private void inserirToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            FmInserirReceita n_Receita = new FmInserirReceita();
+            n_Receita.ShowDialog();
+        }
+
+        private void removerToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            FrmDeletarReceita n_receita = new FrmDeletarReceita();
+            n_receita.ShowDialog();
+        }
+
+        private void Pesquisar(object sender, EventArgs e)
+        {
+            if(!txtPesquisar.Text.Equals(""))
+            {
+                ClsCarregamento.CarregaListBox(lsbReceitas, "Select titulo from receita Where titulo LIKE '%"+txtPesquisar.Text+"%'");
+            }
+            else
+            {
+                ClsCarregamento.CarregaListBox(lsbReceitas, "Select titulo from receita");
+            }
         }
     }
 }

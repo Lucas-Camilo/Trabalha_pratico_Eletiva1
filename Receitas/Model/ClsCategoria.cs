@@ -116,5 +116,9 @@ namespace Receitas.Model
                 conexao.desconectar();
             }
         }
+        public int getId()
+        {
+            return id;
+        }
     }
 }

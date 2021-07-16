@@ -28,6 +28,11 @@ namespace Receitas.Model
             descricao = n_descricao;
         }
 
+        public ClsIngrediente(string n_nome)
+        {
+            nome = n_nome;
+        }
+
         public void InserirIngrediante()
         {
             ClsConexao conexao = new ClsConexao();
@@ -35,7 +40,7 @@ namespace Receitas.Model
             MySqlCommand cmd;
             try
             {
-                string query = "INSERT INTO ingrediente(nome, unidade, quantidade, descricao) Values(@NOME, @UNIDADE, @QUANTIDADE, @DESCRICAO)";
+                string query = "INSERT INTO ingredientes(nome, unidade, quantidade, descricao) Values(@NOME, @UNIDADE, @QUANTIDADE, @DESCRICAO)";
                 cmd = new MySqlCommand(query, conexao.conexao);
                 cmd.Parameters.AddWithValue("@NOME", nome);
                 cmd.Parameters.AddWithValue("@UNIDADE", unidade);
@@ -120,8 +125,12 @@ namespace Receitas.Model
             }
             finally
             {
-                // conexao.Close()
+                conexao.desconectar();
             }
+        }
+        public int getID()
+        {
+            return id;
         }
     }
 }

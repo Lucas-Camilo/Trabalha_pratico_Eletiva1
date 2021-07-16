@@ -77,7 +77,6 @@
             this.txtQuant.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuant.Location = new System.Drawing.Point(171, 195);
             this.txtQuant.Name = "txtQuant";
-            this.txtQuant.PasswordChar = '*';
             this.txtQuant.Size = new System.Drawing.Size(186, 26);
             this.txtQuant.TabIndex = 7;
             // 
@@ -106,7 +105,8 @@
             this.cbxUnidade.Items.AddRange(new object[] {
             "L",
             "Ml",
-            "Kg"});
+            "Kg",
+            "Uni"});
             this.cbxUnidade.Location = new System.Drawing.Point(171, 242);
             this.cbxUnidade.Name = "cbxUnidade";
             this.cbxUnidade.Size = new System.Drawing.Size(186, 28);
@@ -128,7 +128,6 @@
             this.txtDescricao.Location = new System.Drawing.Point(47, 311);
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.PasswordChar = '*';
             this.txtDescricao.Size = new System.Drawing.Size(310, 118);
             this.txtDescricao.TabIndex = 11;
             // 
