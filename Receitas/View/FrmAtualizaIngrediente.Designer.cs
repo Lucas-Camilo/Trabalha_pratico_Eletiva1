@@ -119,7 +119,6 @@
             this.txtDescricao.Location = new System.Drawing.Point(31, 375);
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.PasswordChar = '*';
             this.txtDescricao.Size = new System.Drawing.Size(310, 118);
             this.txtDescricao.TabIndex = 28;
             // 
@@ -161,7 +160,6 @@
             this.txtQuant.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuant.Location = new System.Drawing.Point(155, 259);
             this.txtQuant.Name = "txtQuant";
-            this.txtQuant.PasswordChar = '*';
             this.txtQuant.Size = new System.Drawing.Size(186, 26);
             this.txtQuant.TabIndex = 24;
             // 

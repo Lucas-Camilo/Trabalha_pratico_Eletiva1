@@ -86,7 +86,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cbxUsuarios);
             this.Controls.Add(this.button1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmDeletarUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmDeletarUser";

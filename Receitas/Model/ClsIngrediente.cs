@@ -54,7 +54,7 @@ namespace Receitas.Model
             }
             finally
             {
-                // conexao.Close()
+                conexao.desconectar();
             }
         }
         public void SelecionarIDPorNome()
@@ -89,7 +89,7 @@ namespace Receitas.Model
             MySqlCommand cmd;
             try
             {
-                string query = "Delete from ingrediente WHERE idingredientes = @ID";
+                string query = "Delete from ingredientes WHERE idingredientes = @ID";
                 cmd = new MySqlCommand(query, conexao.conexao);
                 cmd.Parameters.AddWithValue("@ID", id);
                 cmd.ExecuteReader(CommandBehavior.SingleRow);
@@ -110,7 +110,7 @@ namespace Receitas.Model
             MySqlCommand cmd;
             try
             {
-                string query = "UPDATE ingrediente SET nome = @NOME, unidade  = @UNIDADE, quantidade  = @QUANTIDADE, descricao  = @DESCRICAO WHERE id = @ID";
+                string query = "UPDATE ingredientes SET nome = @NOME, unidade  = @UNIDADE, quantidade  = @QUANTIDADE, descricao  = @DESCRICAO WHERE idingredientes = @ID";
                 cmd = new MySqlCommand(query, conexao.conexao);
                 cmd.Parameters.AddWithValue("@ID", id);
                 cmd.Parameters.AddWithValue("@NOME", n_nome);

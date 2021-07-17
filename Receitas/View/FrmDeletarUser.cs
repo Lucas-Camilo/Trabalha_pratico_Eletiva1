@@ -24,6 +24,17 @@ namespace Receitas.View
         {
             ClsCarregamento.carregarComboBox(cbxUsuarios, "Select login from login Where id <>"+ID_Atual.ToString());
 
+            try
+            {
+                cbxUsuarios.SelectedIndex = 0;
+            }
+
+            catch
+            {
+                MessageBox.Show("Nenhum usuario cadastrado. Por favor cadastre um novo usuario !");
+            }
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
