@@ -242,7 +242,7 @@
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisar.Location = new System.Drawing.Point(12, 64);
             this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.Size = new System.Drawing.Size(249, 26);
+            this.txtPesquisar.Size = new System.Drawing.Size(261, 26);
             this.txtPesquisar.TabIndex = 6;
             this.txtPesquisar.TextChanged += new System.EventHandler(this.Pesquisar);
             // 
