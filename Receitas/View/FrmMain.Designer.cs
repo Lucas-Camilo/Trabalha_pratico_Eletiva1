@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,8 +52,16 @@
             this.lsbReceitas = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
+            this.txtTitulo = new System.Windows.Forms.TextBox();
+            this.txtCategoria = new System.Windows.Forms.TextBox();
+            this.lstIngrediente = new System.Windows.Forms.ListBox();
+            this.txtDescricao = new System.Windows.Forms.TextBox();
+            this.pctImagem1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbListaReceitas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctImagem1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -63,7 +72,7 @@
             this.receitasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(809, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -212,26 +221,29 @@
             // 
             this.pcbListaReceitas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pcbListaReceitas.Image = global::Receitas.Properties.Resources.Logo;
-            this.pcbListaReceitas.Location = new System.Drawing.Point(0, 24);
+            this.pcbListaReceitas.Location = new System.Drawing.Point(0, 0);
             this.pcbListaReceitas.Name = "pcbListaReceitas";
-            this.pcbListaReceitas.Size = new System.Drawing.Size(800, 470);
+            this.pcbListaReceitas.Size = new System.Drawing.Size(809, 494);
             this.pcbListaReceitas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pcbListaReceitas.TabIndex = 1;
             this.pcbListaReceitas.TabStop = false;
             // 
             // lsbReceitas
             // 
+            this.lsbReceitas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsbReceitas.FormattingEnabled = true;
-            this.lsbReceitas.Location = new System.Drawing.Point(12, 96);
+            this.lsbReceitas.ItemHeight = 18;
+            this.lsbReceitas.Location = new System.Drawing.Point(12, 124);
             this.lsbReceitas.Name = "lsbReceitas";
-            this.lsbReceitas.Size = new System.Drawing.Size(261, 342);
+            this.lsbReceitas.Size = new System.Drawing.Size(261, 346);
             this.lsbReceitas.TabIndex = 2;
+            this.lsbReceitas.SelectedIndexChanged += new System.EventHandler(this.MostrarReceita);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(8, 41);
+            this.label2.Location = new System.Drawing.Point(8, 69);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 20);
             this.label2.TabIndex = 7;
@@ -240,28 +252,91 @@
             // txtPesquisar
             // 
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(12, 64);
+            this.txtPesquisar.Location = new System.Drawing.Point(12, 92);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(261, 26);
             this.txtPesquisar.TabIndex = 6;
             this.txtPesquisar.TextChanged += new System.EventHandler(this.Pesquisar);
             // 
+            // txtTitulo
+            // 
+            this.txtTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitulo.Location = new System.Drawing.Point(482, 66);
+            this.txtTitulo.Name = "txtTitulo";
+            this.txtTitulo.Size = new System.Drawing.Size(315, 26);
+            this.txtTitulo.TabIndex = 6;
+            this.txtTitulo.TextChanged += new System.EventHandler(this.Pesquisar);
+            // 
+            // txtCategoria
+            // 
+            this.txtCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCategoria.Location = new System.Drawing.Point(300, 226);
+            this.txtCategoria.Name = "txtCategoria";
+            this.txtCategoria.Size = new System.Drawing.Size(163, 26);
+            this.txtCategoria.TabIndex = 6;
+            this.txtCategoria.TextChanged += new System.EventHandler(this.Pesquisar);
+            // 
+            // lstIngrediente
+            // 
+            this.lstIngrediente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstIngrediente.FormattingEnabled = true;
+            this.lstIngrediente.ItemHeight = 20;
+            this.lstIngrediente.Location = new System.Drawing.Point(482, 105);
+            this.lstIngrediente.Name = "lstIngrediente";
+            this.lstIngrediente.Size = new System.Drawing.Size(315, 144);
+            this.lstIngrediente.TabIndex = 8;
+            // 
+            // txtDescricao
+            // 
+            this.txtDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescricao.Location = new System.Drawing.Point(300, 258);
+            this.txtDescricao.Multiline = true;
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.Size = new System.Drawing.Size(497, 212);
+            this.txtDescricao.TabIndex = 9;
+            // 
+            // pctImagem1
+            // 
+            this.pctImagem1.Image = ((System.Drawing.Image)(resources.GetObject("pctImagem1.Image")));
+            this.pctImagem1.Location = new System.Drawing.Point(3, 3);
+            this.pctImagem1.Name = "pctImagem1";
+            this.pctImagem1.Size = new System.Drawing.Size(170, 174);
+            this.pctImagem1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pctImagem1.TabIndex = 10;
+            this.pctImagem1.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.pctImagem1);
+            this.panel1.Location = new System.Drawing.Point(300, 40);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(176, 180);
+            this.panel1.TabIndex = 44;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 494);
+            this.ClientSize = new System.Drawing.Size(809, 494);
+            this.Controls.Add(this.txtDescricao);
+            this.Controls.Add(this.lstIngrediente);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtCategoria);
+            this.Controls.Add(this.txtTitulo);
             this.Controls.Add(this.txtPesquisar);
             this.Controls.Add(this.lsbReceitas);
-            this.Controls.Add(this.pcbListaReceitas);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pcbListaReceitas);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
             this.Text = "FrmMain";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbListaReceitas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctImagem1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -292,5 +367,11 @@
         private System.Windows.Forms.ListBox lsbReceitas;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtPesquisar;
+        private System.Windows.Forms.TextBox txtTitulo;
+        private System.Windows.Forms.TextBox txtCategoria;
+        private System.Windows.Forms.ListBox lstIngrediente;
+        private System.Windows.Forms.TextBox txtDescricao;
+        private System.Windows.Forms.PictureBox pctImagem1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

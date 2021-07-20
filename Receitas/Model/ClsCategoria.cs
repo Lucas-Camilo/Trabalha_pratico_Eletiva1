@@ -12,7 +12,7 @@ namespace Receitas.Model
     class ClsCategoria
     {
         private int id;
-        private string categoria;
+        public string categoria;
         
         public ClsCategoria()
         { }
@@ -106,6 +106,31 @@ namespace Receitas.Model
                 cmd.Parameters.AddWithValue("@CATEGORIA", n_categoria);
                 cmd.Parameters.AddWithValue("@ID", id);
                 cmd.ExecuteReader(CommandBehavior.SingleRow);
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("Falha na operação: " + ex.Message);
+            }
+            finally
+            {
+                conexao.desconectar();
+            }
+        }
+        public void PreecheCategoria(int n_id)
+        {
+            ClsConexao conexao = new ClsConexao();
+            conexao.conectar();
+            MySqlCommand cmd;
+            string query = "SELECT categoria FROM categoria WHERE idcategoria = @ID";
+            try
+            {
+                cmd = new MySqlCommand(query, conexao.conexao);
+                cmd.Parameters.AddWithValue("@ID", n_id);
+                MySqlDataReader dr = cmd.ExecuteReader(CommandBehavior.SingleRow);
+                if(dr.Read())
+                {
+                    categoria = dr["categoria"].ToString();
+                }
             }
             catch (MySqlException ex)
             {

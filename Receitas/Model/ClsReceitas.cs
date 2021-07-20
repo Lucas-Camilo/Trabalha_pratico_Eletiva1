@@ -11,15 +11,15 @@ namespace Receitas.Model
 {
     class ClsReceitas
     {
-        private int id;
-        private int idCategoria;
-        private string titulo;
-        private string foto1;
-        private string foto2;
-        private string foto3;
-        private string obs;
-        private string dicas;
-        private string modo_preparo;
+        public int id;
+        public int idCategoria;
+        public string titulo;
+        public byte[] foto1;
+        public byte[] foto2;
+        public byte[] foto3;
+        public string obs;
+        public string dicas;
+        public string modo_preparo;
 
         public ClsReceitas()
         { }
@@ -45,13 +45,14 @@ namespace Receitas.Model
             MySqlCommand cmd;
             try
             {
-                string query = "INSERT INTO receita(id_categoria,titulo,foto1,foto2,foto3,obs,dicas,modo_preparo) Values (@IDCATEGORIA, @TITULO, @FOTO1, @FOTO2, @FOTO3, @OBS, @DICAS, @MODOPREPARO)";
+                //string query = "INSERT INTO receita(id_categoria,titulo,foto1,foto2,foto3,obs,dicas,modo_preparo) Values (@IDCATEGORIA, @TITULO, @FOTO1, @FOTO2, @FOTO3, @OBS, @DICAS, @MODOPREPARO)";
+                string query = "INSERT INTO receita(id_categoria,titulo,foto1,obs,dicas,modo_preparo) Values (@IDCATEGORIA, @TITULO, @FOTO1, @OBS, @DICAS, @MODOPREPARO)";
                 cmd = new MySqlCommand(query, conexao.conexao);
                 cmd.Parameters.AddWithValue("@IDCATEGORIA", idCategoria);
                 cmd.Parameters.AddWithValue("@TITULO", titulo);
                 cmd.Parameters.AddWithValue("@FOTO1", foto1);
-                cmd.Parameters.AddWithValue("@FOTO2", foto2);
-                cmd.Parameters.AddWithValue("@FOTO3", foto3);
+               // cmd.Parameters.AddWithValue("@FOTO2", foto2);
+                //cmd.Parameters.AddWithValue("@FOTO3", foto3);
                 cmd.Parameters.AddWithValue("@OBS", obs);
                 cmd.Parameters.AddWithValue("@DICAS", dicas);
                 cmd.Parameters.AddWithValue("@MODOPREPARO", modo_preparo);
@@ -130,6 +131,59 @@ namespace Receitas.Model
                 cmd.Parameters.AddWithValue("@DICAS", dicas);
                 cmd.Parameters.AddWithValue("@MODOPREPARO", modo_preparo);
                 cmd.Parameters.AddWithValue("@ID", id);
+                cmd.ExecuteReader(CommandBehavior.SingleRow);
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("Falha na operação: " + ex.Message);
+            }
+            finally
+            {
+                conexao.desconectar();
+            }
+        }
+
+        public void PreencharReceita()
+        {
+            string query = "SELECT id_categoria, foto1, foto2, foto3, obs, dicas, modo_preparo FROM receita WHERE idreceita = @ID";
+            ClsConexao conexao = new ClsConexao();
+            conexao.conectar();
+            MySqlCommand cmd;
+            try
+            {
+                cmd = new MySqlCommand(query, conexao.conexao);
+                cmd.Parameters.AddWithValue("@ID", id);
+                MySqlDataReader dr = cmd.ExecuteReader(CommandBehavior.SingleRow);
+                if(dr.Read())
+                {
+                    //id = int.Parse(dr["idreceita"].ToString());
+                    idCategoria = int.Parse(dr["id_categoria"].ToString());
+                    foto1 = (byte[]) dr["foto1"];
+                    obs = dr["obs"].ToString();
+                    dicas = dr["dicas"].ToString();
+                    modo_preparo = dr["modo_preparo"].ToString();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("Falha na operação: " + ex.Message);
+            }
+            finally
+            {
+                conexao.desconectar();
+            }
+        }
+        public void CriaAssosiacao(int idIngrediente)
+        {
+            ClsConexao conexao = new ClsConexao();
+            conexao.conectar();
+            MySqlCommand cmd;
+            try
+            {
+                string query = "INSERT INTO ingredientes_da_receita(id_ingredientes, id_receita) VALUES(@IDRECEITA, @IDINGREDIENTE)";
+                cmd = new MySqlCommand(query, conexao.conexao);
+                cmd.Parameters.AddWithValue("@IDRECEITA", id);
+                cmd.Parameters.AddWithValue("@IDINGREDIENTE", idIngrediente);
                 cmd.ExecuteReader(CommandBehavior.SingleRow);
             }
             catch (MySqlException ex)

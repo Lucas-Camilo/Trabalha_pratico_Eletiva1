@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Receitas.Model;
-
+using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace Receitas.View
 {
@@ -108,6 +110,40 @@ namespace Receitas.View
             else
             {
                 ClsCarregamento.CarregaListBox(lsbReceitas, "Select titulo from receita");
+            }
+        }
+
+        private void MostrarReceita(object sender, EventArgs e)
+        {
+            try
+            {
+                string titulo = lsbReceitas.SelectedItem.ToString();
+                ClsReceitas receita = new ClsReceitas(titulo);
+                ClsCategoria categoria = new ClsCategoria();
+
+                receita.SelecionarPorId();
+                receita.PreencharReceita();
+                categoria.PreecheCategoria(receita.idCategoria);
+
+                txtTitulo.Text = receita.titulo;
+                txtCategoria.Text = categoria.categoria;
+
+                string receitaFormatada = "Modo de Preparo: " + receita.modo_preparo + Environment.NewLine + "Dicas: "+ receita.dicas;
+                receitaFormatada += "" + Environment.NewLine + receita.obs;
+
+                txtDescricao.Text = receitaFormatada;
+
+                //Carregar Ingrediente;
+                string query = "SELECT ing.nome from ingredientes ing INNER JOIN ingredientes_da_receita ingRece ON ing.idingredientes = ingRece.id_ingredientes WHERE ingRece.id_receita = " + receita.id;
+                ClsCarregamento.CarregaListBox(lstIngrediente, query);
+
+                MemoryStream foto1 = new MemoryStream(receita.foto1);
+
+                pctImagem1.Image = System.Drawing.Image.FromStream(foto1);
+            }
+            catch(Exception err)
+            {
+
             }
         }
     }
